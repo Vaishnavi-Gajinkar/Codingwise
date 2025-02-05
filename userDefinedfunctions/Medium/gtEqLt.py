@@ -1,0 +1,1 @@
+""" Check if two numbers are equal, greater or less """
