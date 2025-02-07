@@ -13,10 +13,3 @@ for i in range(n):
    for k in range(i+1):
       print('*',end=" ")
    print()
-
-# for a in range(n):
-#    for b in range(n-1-a):
-#       print(" ",end="")
-#    for c in range(0,a+1):
-#       print("* ",end="")
-#    print()
