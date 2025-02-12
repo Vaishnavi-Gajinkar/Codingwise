@@ -5,7 +5,7 @@ from functools import reduce
 def add_nums(nums_list):
     '''Adds the numbers of list using reduce function'''
     numbers = nums_list
-    sum = reduce(lambda x,y : x+y , numbers)
+    sum = reduce(lambda x,y : x+y , numbers)                # used lambda function
 
     print(f'Sum of all entered numbers is {sum}')
 
