@@ -1,25 +1,45 @@
 """ Add two complex values """
 
-class Add():
-    def seperate(self,complex):
-        self.number = complex.split("+")
+def checkSign(comp):
+    '''checks the sign of real and imaginary part'''
+    
+    if comp.startswith('-'):
+        if comp.count('-') > 1:
+            var = comp.replace('-','',1)
+            clean = var.replace('j','')
+            lst = clean.split('-')
+            new_lst = [-int(val) for val in lst]
+            return tuple(new_lst)
+        else:
+            var = comp.replace('-','')
+            clean = var.replace('j','')
+            lst = clean.split('+')
+            new_lst = [int(val) for val in lst]
+            return -new_lst[0], new_lst[1]
+    else:
+        if comp.count('-') != 1:
+            clean = comp.replace('j','')
+            lst = clean.split('+')
+            new_lst = [int(val) for val in lst]
+            return new_lst[0], new_lst[1]
+        else:
+            clean = comp.replace('j','')
+            lst = clean.split('-')
+            new_lst = [int(val) for val in lst]
+            return new_lst[0], -new_lst[1]
 
-    def real(self,*args):
-        self.val = sum(args)
-        return self.val
-    
-    def img(self,*imgrys):
-        self.imgaginary = sum(imgrys)
-        return self.imgaginary
-    
-obj = Add()
+
 
 num1 = input("Enter 1st complex num (in a+jb format) ")
 num2 = input("Enter 2nd complex num (in a+jb format) ")
 
-number1 = (num1.split('+')) or (num1.split('-'))
-number2 = (num2.split('+')) or (num2.split('-'))
+r1,i1 = checkSign(num1)
+r2,i2 = checkSign(num2)
 
-print(number1, number2)
+real = r1+r2
+imgry = i1+i2
 
-# not solved 
+if imgry>0:
+    print(f'{real}+j{imgry}')
+else:
+    print(f'{real}-j{abs(imgry)}')
