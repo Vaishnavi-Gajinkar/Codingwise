@@ -19,3 +19,5 @@ for n in range(1,end+1):
     prod = seq.mult()
     res.append(prod)
 print(res)
+
+# not solved

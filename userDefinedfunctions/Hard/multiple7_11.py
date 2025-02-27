@@ -7,5 +7,5 @@ def not7but11(nums):
     return arr
 
 lst = [int(num) for num in input("Enter numbers seperated by comma").split(",")]
-print("Below numbers of list are divisible by 7 not by 11")
+print("Below numbers of list are divisible by 7 but not by 11")
 print(list(not7but11(lst)))
