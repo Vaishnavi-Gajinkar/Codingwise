@@ -21,4 +21,4 @@ result = obj1.strtWth(strt)
 if result:
     print("Great. String starts with that char ")
 else:
-    print("incorrect")
+    print("Incorrect. string does not start with that character")
