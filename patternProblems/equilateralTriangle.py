@@ -5,7 +5,7 @@
 *******
 '''
 
-n = int(input('Enter the max number of characters you want in this pattern'))
+n = int(input('Enter the number of characters you want in the last line'))
 
 for i in range(n):
    for j in range(n-i-1):
