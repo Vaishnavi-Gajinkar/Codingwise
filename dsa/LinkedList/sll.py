@@ -24,10 +24,11 @@ class SLL:
 
     def display(self):
         current = self.head
-        while current.next:
+        while current:
             print(current.value,end=" -> ")
             current = current.next
-        print('None')
+        print('None\nLinked list created successfully')
+
 
 sll = SLL()
 sll.add_node(10)
