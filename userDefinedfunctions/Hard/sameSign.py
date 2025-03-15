@@ -17,7 +17,7 @@ class signCheck:
             elif self.num1 > 0 and self.num2 < 0:
                 return print('Numbers are different in sign')
             elif self.num1 < 0 and self.num2 > 0:
-                return print('Numbers are different in sign')
+                return print('Numbers differ in sign')
         else:
             return print('Numbers are entirely different')
         

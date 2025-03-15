@@ -25,12 +25,13 @@ while flag == 0:
          for k in range(total_lines-i):
             print("* ",end="")
          print()
+      assert total_lines % 2 != 0
       flag = 1
-   except:
-      print("Please enter an odd number of lines, as seen in pattern sample")
+   except AssertionError:
+      print("Please retry with odd number of lines, as seen in sample pattern.")
       flag = 0
    finally:
       if flag == 1:
          print("Beautiful Pattern 😍")
       else:
-         print("No pattern generated 😒")
+         print("This pattern looks ugly 😒")
