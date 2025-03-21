@@ -36,35 +36,37 @@ class DLL_insert:
         current.next = newnode
         self.counter += 1
 
-    def add_mid(self, data, pos):
+    def add_after_pos(self, data, pos):
         newnode = Node(data)
 
         if self.head == None:
             self.head = newnode
             self.counter += 1
             return
-        i = 1
-        current = self.head
-        while i <= pos:
-            if current is None:
-                print("Invalid position. Adding node at end by default.")
-                self.add_end(data)
-                break
+        
+        count = 0
+        ptr = self.head
+        while ptr is not None:                      # counts the total nodes of the LL
+            ptr = ptr.next
+            count += 1
+        if pos > count:
+            print("Invalid position.")
+            return
+        
+        i = 0
+        current = self.head     
+        while i < pos:
             tail = current
             current = current.next                
             i += 1
+        newnode.prev = tail
+        newnode.next = current
+        tail.next = newnode
+        current.prev = newnode
+        self.counter += 1
+        
 
-            if self.counter == 1:                       # only one node exists in LL
-                tail.next = newnode
-                newnode.prev = tail
-                self.counter += 1
-            else:   
-                newnode.next = tail.next                # multiple nodes exists in LL
-                newnode.prev = tail
-                tail.next = newnode
-                current.prev = newnode
-                self.counter += 1
-
+        
     def display(self):
         current = self.head
 
@@ -81,9 +83,9 @@ class DLL_insert:
 obj = DLL_insert()
 obj.display()
 obj.add_bigi(10)
-obj.add_mid(20,2)
+obj.add_after_pos(20,2)
 obj.add_end(30)
-obj.add_mid(50,3)
+obj.add_after_pos(50,3)
 obj.display()
 
 # not solved
