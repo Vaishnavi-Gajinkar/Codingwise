@@ -15,49 +15,61 @@ class DLL_insert:
     def add_bigi(self, data):
         newnode = Node(data)
         
-        if self.head == None:
+        if self.head == None:                       # TC : LL is empty
             self.head = newnode
             self.counter += 1
             return
-        newnode.next = self.head
+        newnode.next = self.head                    # TC : LL exists
+        newnode.prev = None
         self.head = newnode
         self.counter += 1
+
+        print(f'Prev {newnode.prev} Next {newnode.next}')
 
     def add_end(self, data):
         newnode = Node(data)
 
-        if self.head == None:
+        if self.head == None:                       # TC : LL is empty
             self.head = newnode
             self.counter += 1
             return
-        current = self.head
+        current = self.head                         # TC : LL exists
         while current.next != None:
             current = current.next
+        newnode.prev = current
         current.next = newnode
         self.counter += 1
 
-    def add_after_pos(self, data, pos):
+        print(f'Prev {newnode.prev} Next {newnode.next}')
+        
+    def add_at_pos(self, data, pos):
         newnode = Node(data)
 
-        if self.head == None:
+        count = 0                                   # to count the total nodes of the LL
+        ptr = self.head
+        while ptr is not None:                      
+            ptr = ptr.next
+            count += 1
+
+        if self.head == None:                       # adding node if LL is empty
             self.head = newnode
             self.counter += 1
             return
-        
-        count = 0
-        ptr = self.head
-        while ptr is not None:                      # counts the total nodes of the LL
-            ptr = ptr.next
-            count += 1
-        if pos > count:
+        elif pos == 0:                              # adding node at 0th position
+            self.add_bigi(data)
+            return
+        elif pos == count:                          # adding node at last position
+            self.add_end(data)
+            return
+        elif pos >= count:                          # adding node at inexisting position
             print("Invalid position.")
             return
         
-        i = 0
-        current = self.head     
-        while i < pos:
-            tail = current
-            current = current.next                
+        i = 0                                       # adding node at a valid existing positon
+        current = self.head  
+        while i < pos:                              # situating tail at previous & current at next pos wrt new node
+            tail = current                         
+            current = current.next
             i += 1
         newnode.prev = tail
         newnode.next = current
@@ -65,8 +77,43 @@ class DLL_insert:
         current.prev = newnode
         self.counter += 1
         
+        print(f'Prev {newnode.prev} Next {newnode.next}')
 
+    def add_b4_val(self,data,val):
         
+        newnode = Node(data)
+
+        search = 0                                   # checks if node with searching val exists
+        ptr = self.head
+        while ptr is not None:
+            if ptr.value == val:
+                break
+            ptr = ptr.next
+            search += 1
+        else:
+            print(f"Node with value {val} does not exist. Hence cannot add the new node with value {data}")
+            return
+        
+        if search == 0:                             # search value found at 0th position
+            self.add_bigi(data)
+            return
+        elif search == self.counter:                # search value found at last position
+            self.add_end(data)
+            return
+        current = self.head                         # search value found at some mid position
+        i = 0
+        while i < search:
+            tail = current
+            current = current.next
+            i += 1
+        newnode.next = current
+        newnode.prev = tail
+        tail.next = newnode
+        current.prev = newnode
+        self.counter += 1
+        
+        print(f'Prev {newnode.prev} Next {newnode.next}')
+
     def display(self):
         current = self.head
 
@@ -74,18 +121,36 @@ class DLL_insert:
             print("LL Empty. Nothing to display")
             return
         print(f'There are {self.counter} nodes in the linked list as seen below')
-        print("None",end="<-->")
+        print("Proper LL\tNone",end="<-->")
         while current is not None:
             print(current.value,end="<-->")
             current = current.next
         print("None")
 
+    def disp_rev(self):
+        current = self.head
+
+        while current.next is not None:
+            current = current.next
+        print("Reverse LL\tNone",end="<-->")
+        while current.prev is not None:
+            print(current.value,end="<-->")
+            current = current.prev
+        print("None")
+
 obj = DLL_insert()
-obj.display()
+# obj.display()
+obj.add_at_pos(20,0)
 obj.add_bigi(10)
-obj.add_after_pos(20,2)
 obj.add_end(30)
-obj.add_after_pos(50,3)
-obj.display()
+obj.add_end(40)
+obj.add_at_pos(50,2)
+# obj.display()
+obj.add_b4_val(77,80)
+# obj.display()
+# obj.disp_rev()
+
+
+#10-20-50-30-40
 
 # not solved

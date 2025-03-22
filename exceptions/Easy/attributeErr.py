@@ -1,18 +1,20 @@
 ''' wap that handles AttributeError when calling a non-existent method '''
 
 
-
-def existing_function(variable):
-    ''' defining an existing function '''
-    return 'Inside existing function'
+class fun_class(object):
+    class_variable = 12345
+    def existing_function(parameter):
+        ''' defining an existing function '''
+        return 'Inside existing function'
     
 
 try:
     print("Inside try block")
-    string = existing_function('a').attribute
+    print(fun_class.class_variable)
+    print(fun_class.existing_function('a').attribute)
 
 except AttributeError as e:
-    print('Attribute error found',e)
+    print('Attribute error found,',e)
 
 finally:
     print('Inside finally block')
