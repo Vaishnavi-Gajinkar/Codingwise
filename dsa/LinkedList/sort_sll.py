@@ -28,16 +28,23 @@ class SLL_addsort:
 
     def create_sorted_ll(self,array):
         sptr = self.sorted_ptr
-
         for val in array:
             sorted_node = Node(val)
             if sptr == None:
                 sptr = sorted_node
+                print(sptr.next)
             else:
                 while sptr.next is not None:
                     sptr = sptr.next
                 sptr.next = sorted_node
-            self.display_sorted()
+
+        sptr = self.sorted_ptr
+        print("Sorted LL looks as below")
+        while sptr is not None:
+            print(sptr.value,end="->")
+            sptr = sptr.next
+        # print("None")
+        # self.display_sorted()
 
     def sort_asc(self):
         current = self.head
@@ -45,7 +52,8 @@ class SLL_addsort:
 
         while current is not None:
             arr.append(current.value)
-
+            current = current.next
+        print(arr)
         self.create_sorted_ll(sorted(arr))
 
     def display(self):
@@ -55,14 +63,19 @@ class SLL_addsort:
             ptr = ptr.next
         print("None")
 
-    def display_sorted(self):
-        sptr = self.sorted_ptr
-        print("Sorted LL looks as below")
-        while sptr is not None:
-            print(sptr.value,end="->")
-            sptr = sptr.next
-        print("None")
+    # def display_sorted(self):
+    #     sptr = self.sorted_ptr
+    #     print("Sorted LL looks as below")
+    #     while sptr is not None:
+    #         print(sptr.value,end="->")
+    #         sptr = sptr.next
+    #     print("None")
 
 obj = SLL_addsort()
-ask = [int(x) for x in input("Enter node values seperated by comma").split(',') ]
-obj.addnode(10)
+ask = [int(x) for x in input("Enter node values seperated by comma ").split(',') ]
+for val in ask:
+    obj.addnode(val)
+
+obj.sort_asc()
+
+# NOT SOLVED
