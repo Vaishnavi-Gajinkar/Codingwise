@@ -73,6 +73,34 @@ def insertMid(head, pos, data):
 
     return head
 
+def insertB4val(head, sval, data):
+    ptr = head
+    newnode = Node(data)
+    if ptr == None:
+        head = ptr = newnode
+        return head
+    elif ptr.data == sval:
+        newnode.next = head
+        head = newnode
+        return head
+    
+    flag = False
+    while ptr != None:                              # to check if value is present in LL
+        if ptr.data == sval:
+            flag == True
+            break
+        ptr = ptr.next
+    
+    if flag:                                        # add node before search val 
+        qtr = head
+        ftr = qtr.next
+        while qtr.data != sval:
+            qtr = qtr.next
+            ftr = ftr.next
+        newnode.next = ftr
+        qtr.next = newnode
+    return head
+
 
 a = Node(10)
 b = Node(20)
@@ -89,4 +117,5 @@ traverse(a)
 a = insertAtBigi(a,5)
 a = insertEnd(a,50)
 a = insertMid(a, 0, 25)
+a = insertB4val(a, 30, 35)
 traverse(a)
