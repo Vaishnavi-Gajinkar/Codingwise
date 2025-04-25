@@ -177,11 +177,39 @@ def delAtBtwn(head, pos):
         while i < pos-1: 
             qtr = qtr.next
             ftr = ftr.next
+            i += 1
         qtr.next = ftr.next
         del ftr
         return head
     else:
         print("Invalid position")
+
+def delAVal(head, sval):
+    if head == None:
+        print("LL is empty. Nothing to delete")
+        return None
+    elif head.data == sval:
+        head = head.next
+        return head
+    
+    flag = False
+    copyptr = head
+    while copyptr:
+        if copyptr.data == sval:
+            flag = True
+            break
+        copyptr = copyptr.next
+    if flag:
+        qtr = head
+        ftr = qtr.next
+        while ftr.data != sval:
+            qtr = qtr.next
+            ftr = ftr.next
+        qtr.next = ftr.next
+        del ftr
+        return head
+    else:
+        print(f"No deletion. Value {sval} not found")
 
 
 a = Node(10)
@@ -201,14 +229,25 @@ a = insertEnd(a,50)
 a = insertMid(a, 0, 1)
 a = insertB4val(a, 30, 25)
 a = insertAftVal(a, 30, 35)
+
 traverse(a)
 
+a = delAtBigi(a)
+a = delAtEnd(a)
+a = delAtBtwn(a,4)
+a = delAVal(a, 20)
+traverse(a)
+a = delAVal(a, 50)
 #Output :
 
-'''PS C:\Users\Lenovo\OneDrive\Documents\PythonPractise> & C:/Users/Lenovo/AppData/Local/Programs/Python/Python313/python.exe c:/Users/Lenovo/OneDrive/Documents/PythonPractise/CodingWise/dsa/LinkedList/singlyLL.py
-
+'''PS C:path
 There are 4 nodes in linkedlist at present
 10->20->30->40->None
 
 There are 9 nodes in linkedlist at present
-1->5->10->20->25->30->35->40->50->None'''
+1->5->10->20->25->30->35->40->50->None
+
+There are 5 nodes in linkedlist at present
+5->10->25->35->40->None
+No deletion. Value 50 not found
+'''
