@@ -135,6 +135,54 @@ def insertAftVal(head, sval, data):
 
         return head
 
+def delAtBigi(head):
+    if head == None:
+        print("LL is empty. Nothing to delete")
+        return None
+    head = head.next
+    return head
+
+def delAtEnd(head):
+    if head == None:
+        print("LL is empty. Nothing to delete")
+        return None
+    qtr = head
+    ftr = qtr.next
+    while ftr.next:
+        qtr = qtr.next
+        ftr = ftr.next
+    qtr.next = ftr.next
+    del ftr
+
+    return head
+ 
+def delAtBtwn(head, pos):
+    if head == None:
+        print("LL is empty. Nothing to delete")
+        return None
+    elif pos == 0:
+        head = head.next
+        return head
+    
+    count = 0
+    copyptr = head
+    while copyptr:
+        count += 1
+        copyptr = copyptr.next
+        
+    if count > pos:
+        qtr = head
+        ftr = qtr.next
+        i = 0
+        while i < pos-1: 
+            qtr = qtr.next
+            ftr = ftr.next
+        qtr.next = ftr.next
+        del ftr
+        return head
+    else:
+        print("Invalid position")
+
 
 a = Node(10)
 b = Node(20)
