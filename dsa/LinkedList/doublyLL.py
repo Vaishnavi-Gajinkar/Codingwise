@@ -11,23 +11,20 @@ class Node:
 def insertAtBigi(head, data):
     newnode = Node(data)
     ptr = head
-    if head == None:
-        newnode.next = head
-        head = newnode
-        return head
-    
-    newnode.next = head
-    head.prev = newnode
+    # newnode.prev = None
+    newnode.next = ptr
+    ptr.prev = newnode
     head = newnode
     return head
 
 def insertAtEnd(head, data):
     newnode = Node(data)
-    ptr = head
 
     if head == None:
         head = newnode
         return head
+    
+    ptr = head
     while ptr.next != None:
         ptr = ptr.next
     newnode.prev = ptr
@@ -37,14 +34,18 @@ def insertAtEnd(head, data):
 def insAtMid(head, pos, data):
     newnode = Node(data)
 
-    ptr = qtr = head
+    ptr = head
 
     if head == None:
         head = newnode
         return head
     elif pos == 0:
-        insertAtBigi(head, data):
-        return
+        pointer = insertAtBigi(head, data)
+        return pointer
+        # newnode.next = head
+        # head.prev = newnode
+        # head = newnode
+        # return head
     
     count = 0
     while ptr:
@@ -52,11 +53,103 @@ def insAtMid(head, pos, data):
         ptr = ptr.next
     
     if pos <= count:
+        qtr = head
+        # print(qtr.data)
         ftr = qtr.next
         i = 0
 
         while i < pos-1:
-            
+            qtr = qtr.next
+            ftr = ftr.next
+            i += 1
+        newnode.next = ftr
+        newnode.prev = qtr
+        qtr.next = newnode
+        ftr.prev = newnode
+
+        return head
+    else:
+        print("Invalid Index")
+        return head
+
+def insBeforeSval(head, sval, data):
+    newnode = Node(data)
+    ptr = head
+    qtr = head
+    ftr = qtr.next
+
+    if head == None:
+        newnode.next = head
+        head = newnode
+        return head
+    elif head.data == sval:
+        newnode.next = head
+        head = newnode
+        return head
+    
+    flag = False
+    while ptr:
+        if ptr.data == sval:
+            # print('Search val found!')
+            flag = True
+            break
+        ptr = ptr.next
+    
+    if flag:
+        while ftr.data != sval:
+            qtr = qtr.next
+            ftr = ftr.next
+        newnode.prev = qtr
+        newnode.next = ftr
+        qtr.next = newnode
+        ftr.prev = newnode
+        return head
+    
+    else:
+        print("search value not found")
+        return head
+
+def insAfterSval(head, sval, data):
+    newnode = Node(data)
+    ptr = qtr = head
+    ftr = qtr.next
+
+    if head == None:
+        newnode.next = head
+        head = newnode
+        return head
+    elif head.data == sval:
+        newnode.next = head.next
+        newnode.prev = head
+        head.next.prev = newnode
+        head.next = newnode
+        return head
+    
+    flag = False
+    while ptr:
+        if ptr.data == sval:
+            flag = True
+            break
+        ptr = ptr.next
+    
+    if flag:
+        while qtr.data != sval:
+            qtr = qtr.next
+            ftr = ftr.next
+        
+            if ftr == None:
+                newnode.prev = qtr
+                newnode.next = ftr
+                qtr.next = newnode
+                return head
+            newnode.prev = qtr
+            newnode.next = ftr
+            qtr.next = newnode
+            ftr.prev = newnode
+            return head
+    else:
+        print("search value not found")
+
 
 def traverse(head):
     ptr = qtr = head
@@ -79,9 +172,13 @@ def traverse(head):
         count += 1
     print('None')
 
-    print(f'Currently there are {count} nodes in the DLL')
+    print(f'Currently there are {count} nodes in the DLL\n')
 
-
+def digTraverse(head):
+    ptr = qtr = head
+    while ptr:
+        print(f'{ptr.prev}\t{ptr.data}\t{ptr.next}')
+        ptr = ptr.next
 
 a = Node(10)
 b = Node(20)
@@ -96,8 +193,16 @@ c.next = d
 d.prev = c
 
 traverse(a)
-
+# digTraverse(a)
 a = insertAtBigi(a, 5)
 a = insertAtEnd(a, 45)
-
+a = insAtMid(a, 0, 1)
+a = insAtMid(a, 3, 15)
+a = insAtMid(a, 25, 100)
+a = insBeforeSval(a, 30, 25)
+a = insBeforeSval(a, 50, 49)
+a = insAfterSval(a, 30, 35)
+a = insAfterSval(a, 45, 50)
+a = insAfterSval(a, 60, 61)
 traverse(a)
+# digTraverse(a)
