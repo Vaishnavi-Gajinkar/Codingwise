@@ -150,6 +150,63 @@ def insAfterSval(head, sval, data):
     else:
         print("search value not found")
 
+def delFrmBigi(head):
+    if head == None:
+        print("LL empty. Nothing to delete")
+        return None
+    head = head.next
+    head.prev = None
+    return head
+
+def delAtEnd(head):
+    if head == None:
+        print("LL empty. Nothing to delete")
+        return None
+    elif head.next == None:
+        print("Deleted the only node from LL")
+        head = head.next
+        return head
+    qtr = head
+    ftr = qtr.next
+    while ftr.next:
+        qtr = qtr.next
+        ftr = ftr.next
+    qtr.next = ftr.next
+    ftr.prev = None
+    del ftr
+    return head
+
+def delByPos(head,pos):
+    if head == None:
+        print("LL empty. Nothing to delete")
+        return None
+    ptr = head
+    count = 0
+    while ptr:
+        count += 1
+        ptr = ptr.next
+    
+    if pos < count:
+        i = 0 
+        qtr = head
+        ftr = qtr.next
+        while i < pos-1:
+            qtr = qtr.next
+            ftr = ftr.next
+            i += 1
+
+        if ftr.next == None:
+            qtr.next = ftr.next
+            ftr.prev = None
+            return head
+        
+        qtr.next = ftr.next
+        ftr.next.prev = qtr
+        del ftr
+        return head
+    else:
+        print("Invalid index, cannot be deleted")
+        return head
 
 def traverse(head):
     ptr = qtr = head
@@ -203,6 +260,10 @@ a = insBeforeSval(a, 30, 25)
 a = insBeforeSval(a, 50, 49)
 a = insAfterSval(a, 30, 35)
 a = insAfterSval(a, 45, 50)
-a = insAfterSval(a, 60, 61)
+# a = insAfterSval(a, 60, 61)
+a = delFrmBigi(a)
+a = delAtEnd(a)
+a = delByPos(a, 8)
+a = delByPos(a, 100)
 traverse(a)
 # digTraverse(a)
