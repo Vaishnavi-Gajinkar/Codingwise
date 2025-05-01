@@ -180,6 +180,11 @@ def delByPos(head,pos):
     if head == None:
         print("LL empty. Nothing to delete")
         return None
+    elif pos == 0:
+        head = head.next
+        head.prev = None
+        return head
+    
     ptr = head
     count = 0
     while ptr:
@@ -206,6 +211,43 @@ def delByPos(head,pos):
         return head
     else:
         print("Invalid index, cannot be deleted")
+        return head
+
+def delByVal(head, sval):
+    if head == None:
+        print("LL empty. Nothing to delete")
+        return None
+    elif head.data == sval:
+        head = head.next
+        return head
+    
+    flag = False
+    ptr = head
+    while ptr:
+        if ptr.data == sval:
+            flag = True
+            break
+        ptr = ptr.next
+    
+    if flag:
+        qtr = head
+        ftr = qtr.next
+        while ftr.data != sval:
+            qtr = qtr.next
+            ftr = ftr.next
+
+        if ftr.next == None:
+            qtr.next = None
+            del ftr
+            return head
+        
+        qtr.next = ftr.next
+        ftr.prev = None
+        ftr.next.prev = qtr
+        del ftr
+        return head
+    else:
+        print("Search value not found")
         return head
 
 def traverse(head):
@@ -265,5 +307,8 @@ a = delFrmBigi(a)
 a = delAtEnd(a)
 a = delByPos(a, 8)
 a = delByPos(a, 100)
+a = delByVal(a, 15)
+a = delByVal(a, 30)
+a = delByVal(a, 100)
 traverse(a)
 # digTraverse(a)
