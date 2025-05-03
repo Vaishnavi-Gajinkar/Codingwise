@@ -59,11 +59,7 @@ def traverse(head):
 # c.next = d
 
 a = None
-a = insAtEnd(a, 10)
-a = insAtEnd(a, 20)
-a = insAtEnd(a, 30)
-a = insAtEnd(a, 30)
-a = insAtEnd(a, 40)
-a = insAtEnd(a, 50)
-a = insAtEnd(a, 50)
+for i in range(10,101,10):
+    a = insAtEnd(a, i)
+
 traverse(a)
