@@ -59,3 +59,15 @@ print("Node Added at begining position Successfully\n")
 obj.insert_mid(25,20)
 obj.display()
 print("Node Added at middle position Successfully\n")
+
+'''
+OUTPUT :
+10->20->30->None
+Node Added at end position Successfully
+
+5->10->20->30->None
+Node Added at begining position Successfully
+
+5->10->20->25->30->None
+Node Added at middle position Successfully
+'''

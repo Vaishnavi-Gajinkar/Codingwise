@@ -36,3 +36,9 @@ sll.add_node(20)
 sll.add_node(30)
 sll.add_node(40)
 sll.display()
+
+'''
+OUTPUT :
+10 -> 20 -> 30 -> 40 -> None
+Linked list created successfully
+'''

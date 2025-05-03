@@ -79,3 +79,11 @@ a = insAtEnd(a,15)
 a = insAtEnd(a,43)
 
 traverse(a)
+
+'''
+OUTPUT :
+Currently there are 8 nodes in the LL
+10->20->30->40->65->32->15->43->None
+After Sorting, elements of LL are rearranged as below
+10->15->20->30->32->40->43->65->None
+'''
