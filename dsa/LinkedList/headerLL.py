@@ -13,7 +13,7 @@ def insAtBigi(head, value):
     if head == None:
         head = Node(1)
         newnode = Node(value)
-        head.data = 1
+        # head.data = head.data+1
         head.next = newnode
         print("Node added at begining of empty SLL")
         return head
@@ -28,6 +28,7 @@ def insAtBigi(head, value):
 def insAtEnd(head, value):
     if head == None:
         print("Node added at end position of an empty SLL")
+
         return insAtBigi(head, value)
     qtr = head.next
     ftr = qtr.next
@@ -40,13 +41,41 @@ def insAtEnd(head, value):
     print("Node added at end position of non-empty SLL")
     return head
 
+def insAtBtwn(head, pos, value):
+    if head == None:
+        print("Node added at 0th pos of HSLL")
+        return insAtBigi(head, value)
+    if pos == head.data:
+        return insAtEnd(head, value)
+    
+    if pos < head.data:
+        i = 0
+        qtr = head.next
+        ftr = qtr.next
+        while i < pos-1:
+            qtr = qtr.next
+            ftr = ftr.next
+            i += 1
+            # if ftr == None:
+            #     qtr.next = newnode
+            #     return head
+        newnode = Node(value)
+        newnode.next = ftr
+        qtr.next = newnode
+        head.data = head.data + 1
+        print(f"Node added at position {pos} of HSLL")
+        return head
+    else:
+        print("Invalid position. Node not added")
+        return head
+
 def traverse(head):
     if head == None:
         print("HDLL is empty. Nothing to display")
         return None
     else:
         qtr = head.next
-        print(qtr.data,end="--->")
+        print(head.data,end="--->")
         while qtr != None:
             print(qtr.data,end="->")
             qtr = qtr.next
@@ -54,12 +83,13 @@ def traverse(head):
         return head
 
 a = None
-# b = Node(20)
-# c = Node(30)
-# d = Node(40)
-# e = Node(50)
-        
+traverse(a)
+
 for i in range(10,101,10):
     a = insAtEnd(a, i)
 
+a = insAtBigi(a,5)
+a = insAtBtwn(a, 4, 35)
+a = insAtBtwn(a, 12, 105) 
 traverse(a)
+
