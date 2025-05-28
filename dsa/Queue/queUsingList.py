@@ -44,14 +44,27 @@ def peekFront(ptr):
         print("Front of Queue:", ptr.arr[ptr.front+1])
     elif ptr.front == -1 or ptr.rear != -1:
         print("Front of Queue:", ptr.arr[0])
-    else:
-        print("Front of Queue:",ptr.arr[ptr.front])
+    # else:
+    #     print("Front of Queue:",ptr.arr[ptr.front])
 
 def peekRear(ptr):
     if ptr == None:
         print("Queue empty. Nothing to display")
-        return ptr
+        return
     print("Rear of Queue:",ptr.arr[ptr.rear])
+
+def peek(head):
+    ptr = head
+    # if ptr.arr[ptr.front] > (ptr.size-1):
+    #     print("Queue empty. Nothing to peek")
+    #     return
+    i = ptr.front + 1
+    # print("i has",i)
+    while i <= ptr.rear:
+        print(ptr.arr[i],end="-")
+        i += 1
+    print("---")
+    
 
 q = queue()
 q.size = 10
@@ -86,6 +99,7 @@ q = dequeue(q)
 print(q.arr)
 peekFront(q)
 peekRear(q)
+peek(q)
 q = dequeue(q)
 q = dequeue(q)
 q = dequeue(q)
@@ -96,6 +110,8 @@ q = dequeue(q)
 print(q.arr)
 peekFront(q)
 peekRear(q)
+peek(q)
+
 
 '''
 OUTPUT:
@@ -111,7 +127,9 @@ Rear of Queue: 100
 [None, None, None, None, 50, 60, 70, 80, 90, 100]
 Front of Queue: 50
 Rear of Queue: 100
+50-60-70-80-90-100----
 [None, None, None, None, None, None, None, None, None, None]
 Reached end of queue now!
 Rear of Queue: None
+---
 '''
