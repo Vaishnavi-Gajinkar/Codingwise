@@ -17,7 +17,7 @@ def preorder(ptr):
     preorder(ptr.right)
 
 def inorder(ptr):
-    ''' displays the nodes of a tree in preorder sequence '''
+    ''' displays the nodes of a tree in inorder sequence '''
     if ptr == None:
         return None
     preorder(ptr.left)
@@ -25,7 +25,7 @@ def inorder(ptr):
     preorder(ptr.right)
 
 def postorder(ptr):
-    ''' displays the nodes of a tree in preorder sequence '''
+    ''' displays the nodes of a tree in postorder sequence '''
     if ptr == None:
         return None
     preorder(ptr.left)
