@@ -47,3 +47,19 @@ print(f'Left of h is {h.left} and Right of h is {h.right}')
 print(f'Left of i is {i.left} and Right of i is {i.right}')
 print(f'Left of j is {j.left} and Right of j is {j.right}')
 print(f'Left of k is {k.left} and Right of k is {k.right}')
+
+'''
+OUTPUT:
+Root node a has value 10
+Left of a is 20 and Right of a is 30
+Left of b is 40 and Right of b is 50
+Left of c is 60 and Right of c is 70
+Left of d is 80 and Right of d is 90
+Left of e is 100 and Right of e is 110
+Left of f is None and Right of f is None
+Left of g is None and Right of g is None
+Left of h is None and Right of h is None
+Left of i is None and Right of i is None
+Left of j is None and Right of j is None
+Left of k is None and Right of k is None
+'''
