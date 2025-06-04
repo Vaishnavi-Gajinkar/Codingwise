@@ -1,5 +1,5 @@
 ''' check if the tree is a full binary tree '''
-''' i.e. nodes should have 0/1/2 children only '''
+''' i.e. nodes should have 0 or 2 children only '''
 
 class Tree:
     data = None
@@ -13,24 +13,24 @@ def count_nodes(root, count=0):
     if root == None:
         return 0
     else:
-        return 1+count_nodes(root.left)+count_nodes(root.right)
+        return 1+count_nodes(root.left)+count_nodes(root.right)             # 1 added to for root node count
 
 def calc_height(ptr, height=0):
     if ptr == None:
         return 0
     else:
-        return 1+max(calc_height(ptr.left),calc_height(ptr.right))
+        return 1+max(calc_height(ptr.left),calc_height(ptr.right))          # 1 added to for root node count
 
 def isFullBT(ptr):
-    if ptr == None:
+    if ptr == None:                                     #pointer is below leaf node
         return True
-    elif ptr.left == None and ptr.right == None:
+    elif ptr.left == None and ptr.right == None:        #pointer is on leaf node
         return True
-    elif ptr.left != None and ptr.right == None:
+    elif ptr.left != None and ptr.right == None:        #node has left child only
         return False
-    elif ptr.left == None and ptr.right != None:
+    elif ptr.left == None and ptr.right != None:        #node has right child only
         return False
-    elif ptr.left != None or ptr.right != None:
+    elif ptr.left != None or ptr.right != None:         #node has 2 children
         return isFullBT(ptr.left) and isFullBT(ptr.right)
 
 
@@ -49,7 +49,7 @@ b.left = d
 b.right = e
 
 c.left = f
-# c.right = g
+c.right = g
 
 cnt = count_nodes(a)
 print(f"There are {cnt} nodes in the binary tree")
@@ -62,3 +62,17 @@ if flag == True:
     print("This is a Full Binary Tree")
 else:
     print("This is not a Full Binary Tree")
+
+
+'''
+OUTPUT:
+There are 7 nodes in the binary tree
+Height of tree is 3
+This is a Full Binary Tree
+------------------------------------------------
+# if one leaf node is removed
+
+There are 6 nodes in the binary tree
+Height of tree is 3
+This is not a Full Binary Tree
+'''
