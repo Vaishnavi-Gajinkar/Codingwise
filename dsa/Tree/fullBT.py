@@ -13,7 +13,7 @@ def count_nodes(root, count=0):
     if root == None:
         return 0
     else:
-        return 1+count_nodes(root.left)+count_nodes(root.right)             # 1 added to for root node count
+        return 1+count_nodes(root.left)+count_nodes(root.right)             # 1 added to for root node countp
 
 def calc_height(ptr, height=0):
     if ptr == None:
