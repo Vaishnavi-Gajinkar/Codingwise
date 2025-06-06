@@ -45,8 +45,8 @@ a.right = c
 b.left = d
 b.right = e
 
-c.left = f
-c.right = g
+# c.left = f
+# c.right = g
 
 cnt = count_nodes(a)
 print(f"There are {cnt} nodes in the binary tree")
@@ -60,3 +60,15 @@ if flag == True:
 else:
     print("It is not a Perfect Binary Tree")
     
+'''
+OUTPUT :
+There are 7 nodes in the binary tree
+Height of tree is 3
+It is a Perfect Binary Tree
+-----------------------------------------------
+# if nodes are removed
+
+There are 5 nodes in the binary tree
+Height of tree is 3
+It is not a Perfect Binary Tree
+'''
