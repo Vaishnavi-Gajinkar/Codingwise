@@ -40,31 +40,52 @@ def createBST(ptr, value):
 
     return ptr
 
-def delFrmBST(ptr, value):
+def predecessor(ptr):
+    ptr = ptr.left
+    while ptr.right != None:
+        ptr = ptr.right
+    return ptr
+
+def successor(ptr):
+    ptr = ptr.right
+    while ptr.left != None:
+        ptr = ptr.left
+    return ptr
+
+
+def delFrmBST(ptr, value, pref='s'):
     if ptr == None:
         return None
     elif ptr.data > value:
-        ptr.left = delFrmBST(ptr.left, value)
+        ptr.left = delFrmBST(ptr.left, value, pref)
     elif ptr.data < value:
-        ptr.right = delFrmBST(ptr.right, value)
-    elif ptr.data == value:
+        ptr.right = delFrmBST(ptr.right, value, pref)
+    else: #elif ptr.data == value:
         if ptr.left == None:
             temp = ptr.right
             ptr = None
             return temp
-        elif ptr.right == None:
+        
+        if ptr.right == None:
             temp = ptr.left
             ptr = None
             return temp
-        else:
-            temp = ptr.data
-            ptr = ptr.left
-            predd = Predecessor(ptr)
-            
+        
+        # if pref == 'p':
+        #     predd = predecessor(ptr)
+        #     ptr.data = predd.data
 
+        #     ptr = ptr.left
+        #     ptr = delFrmBST(ptr, predd.data, pref)
+        #     return ptr 
+        
+        # elif pref == 's':
+        succ = successor(ptr)
+        ptr.data = succ.data
 
-
-
+        ptr = ptr.right
+        ptr = delFrmBST(ptr, succ.data, pref)
+        return ptr
 
 
 def inorder(ptr):
@@ -78,6 +99,31 @@ def inorder(ptr):
 
 arr = [int(x) for x in input("Enter node values of tree (comma seperated)").split(",")]
 
+# a = Tree(10)
+# b = Tree(94)
+# c = Tree(41)
+# d = Tree(82)
+# e = Tree(77)
+# f = Tree(12)
+# g = Tree(76)
+# h = Tree(56)
+# i = Tree(34)
+# j = Tree(2)
+
+# a.left = b
+# a.right = c
+
+# b.left = d
+# b.right = e
+
+# c.left = f
+# c.right = g
+
+# d.left = h
+# d.right = i
+
+# e.left = j
+
 a = None
 for val in range(len(arr)):
     a = createBST(a, arr[val])
@@ -85,3 +131,23 @@ for val in range(len(arr)):
 print("Total nodes in tree -",count_nodes(a))
 print("Height of tree is -",calc_height(a))
 print(inorder(a))
+
+delVal = int(input("Enter ur val to be deleted "))
+pref = input("Given a choice, would you prefer successor or predecessor ? ")
+pref = pref[0].lower()
+a = delFrmBST(a, delVal, pref)
+
+print(inorder(a))
+
+'''
+OUTPUT :
+Enter node values of tree (comma seperated)5,4,8,6,7,3,2
+Total nodes in tree - 7
+Height of tree is - 4
+2, 3, 4, 5, 6, 7, 8, None
+Enter ur val to be deleted 1
+Given a choice, would you prefer successor or predecessor ? s
+None
+'''
+
+# not solved
