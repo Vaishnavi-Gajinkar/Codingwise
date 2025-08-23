@@ -16,7 +16,7 @@ print("\n",raw_data.T[0].shape)                                                 
 
 date, step_count, mood, calories_burned, hours_of_sleep, activity_status, weight = raw_data.T                   # unpacked each row of transposed dataset in seperate variable
 
-print("\n", date.dtype)                                                                                         # checking data type of each variable
+print("\n", date.dtype)                                                                                         # checking data type of this variable
 
 # date = np.array(date, dtype='datetime64[D]')                                                                  # converting data from string to relevent dtypes
 # date = raw_data.astype('datetime64[ns]')
