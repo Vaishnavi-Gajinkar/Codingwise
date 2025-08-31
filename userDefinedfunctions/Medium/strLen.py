@@ -20,4 +20,12 @@ else:
     print("Strings are of different sizes")
 
 
-# not solved
+'''
+OUTPUT:
+Enter multiple strings (comma seperated) qwertyuiop,asdfghjkl,zxcvbnm
+Strings are of different sizes
+---------------------------------------------------------------------------
+Enter multiple strings (comma seperated) qaz,wsx,edc,rfv,tgb,yhn,ujm,ikl 
+All strings are of same length
+
+'''
