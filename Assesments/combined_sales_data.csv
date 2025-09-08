@@ -1,0 +1,4 @@
+StoreID,City,MonthlySales,ProfitMargin,CustomerFootfall,Population,AvgIncome,CompetitorsCount
+S1,Delhi,200000,0.2,10000,20M,35000,10
+S3,Indore,100000,0.25,6000,3M,25000,2
+S2,Pune,150000,0.15,8000,8M,40000,6
