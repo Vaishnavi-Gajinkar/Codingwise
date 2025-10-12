@@ -1,0 +1,53 @@
+1.	SQL : Ranking Employees
+Write an SQL query to find the top 3 highest-earning employees in each department from the `employees` table, which has columns: `id`, `name`, `salary`, and `department_id`.
+
+SELECT	*, rnk FROM (
+SELECT id, name, salary, department_id, DENSE_RANK() OVER(PARTITION BY department_id ORDER BY salary DESC) as rnk FROM employees) as sub
+WHERE rnk IN (1,2,3)
+
+
+2.	PANDAS : Data Merging
+You have two Pandas DataFrames: `df_users` with columns `['user_id', 'name']` and `df_orders` with columns `['order_id', 'user_id', 'amount']`. Write a code snippet that merges these to show the name of the user for each order.
+
+df.merge(df_users, df_orders, ON=’user_id’, HOW=left) 
+
+
+3.	Statistics: Outlier Detection
+Given the dataset `[10, 12, 12, 13, 15, 18, 20, 22, 29, 35]` , calculate the Interquartile Range (IQR). A data point is considered an outlier if it's below `Q1 - 1.5 * IQR` or above `Q3 + 1.5 * IQR`. Which of the following values would be considered an outlier?
+
+
+Q2 = median = 50% == (15 + 18) / 2 = 16.5
+Now, Q1 is the median of all values < Q2 == 10,12,12,13,15 == 12
+Now, Q3 is the median of all values > Q2 == 18,20,22,29,35 == 22
+
+IQR = Q3 – Q1 == 22 – 12 = 10
+Min = Q1-1.5*IQR == 12-1.5*10 = -3
+Max = Q3+1.5*IQR == 22+1.5*10 = 37
+Outliers = none (since all values of dataset is between -3 & 37)
+
+New Data = [2, 20, 22, 24, 25, 26, 28, 30, 35, 50]
+Q2 = 25.5
+Q1 = [2,20,22,24,25] = 22
+Q3 = [26,28,30,35,50] = 30
+IQR = 30-22 = 8
+Min = 10
+Max = 42
+Outliers = [2,50]
+
+
+4.	SQL: Spot the Error
+SELECT department, MAX(salary) 
+FROM employees 
+WHERE MAX(salary) > 50000 
+GROUP BY department
+
+The column present in WHERE is an aggregated value which is not allowed. Hence it will fail.
+
+
+5.	NumPy: Vectorization
+Write a single line of NumPy code to calculate the Euclidean distance between two points, 
+`p1 = np.array([1, 2, 3])` and `p2 = np.array([4, 5, 6])`
+The formula is `sqrt(sum((p1-p2)^2))`
+
+
+
