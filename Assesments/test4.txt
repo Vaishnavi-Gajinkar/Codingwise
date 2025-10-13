@@ -51,3 +51,32 @@ The formula is `sqrt(sum((p1-p2)^2))`
 
 
 
+
+6.	SQL: Finding the Second Value
+Write an SQL query to find the customer who placed the second most recent order. Assume an `orders` table with `customer_id` and `order_date` columns.
+
+SELECT customer_id, MAX(order_date) AS 2ndlatestdate 
+FROM orders 
+WHERE order_date < (SELECT MAX(order_date) AS latestdate FROM orders) AS sub
+
+7.	Pandas : Column creation
+Write a single line of Pandas code to create a new column named `profit_margin` in a DataFrame `df`. The formula is `(df['profit'] / df['revenue']) * 100`.
+
+df[‘profit_margin’] = (df['profit'] / df['revenue']) * 100
+
+8.	Pandas : Handling Missing Data
+Write a line of Pandas code to fill the missing `NaN` values in the 'age' column of a DataFrame `df` with the median age of that column.
+
+df['age'].fillna(df['age'].median(), inplace=True)
+
+9.	Pandas: Spot the Output
+What will be the output of the following Pandas code?
+import pandas as pd 
+df = pd.DataFrame({'Category': ['A', 'B', 'A', 'B'], 'Value': [10, 20, 30, 40]}) 
+result = df.groupby('Category').agg(total=('Value', 'sum'), count=('Value', 'count')) 
+print(result)
+        total 	count 
+Category 
+A 	    40 	    2 
+B 	    60 	    2
+
