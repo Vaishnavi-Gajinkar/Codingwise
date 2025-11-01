@@ -1,3 +1,10 @@
 Heap is a complete binary tree
 Min Heap -- root node is minimum value. subsequent elements added are larger than their parents
 Max Heap -- root node is maximum value. subsequent elements added are smaller than their parents
+
+Formulas for heap ds
+
+Left child - 2 x parent Idx + 1
+Right child - 2 x parent Idx + 2
+Parent index = (currentIdx - 1)//2
+Last parent index = (sizeOfHeap // 2) - 1

@@ -11,7 +11,7 @@ def insertIntoMaxHeap(arr:list, val):
     arr.append(val)                                                 # adding new array value to the list
     current = len(arr)-1                                            # current points to size of constructed tree minus root (i.e. last position filled in the complete BT)
 
-    while current > 0:                                              # ptr is not on root node as it has no parents to calc further
+    while current > 0:                                              # checking ptr is not on root node as it has no parents to calc further
         parent = (current-1)//2                                     # formula to calc position of parent node wrt to pos of new node's position
 
         if arr[current] > arr[parent]:                              # comparing current's val to parent to check whether swapping needed
@@ -21,7 +21,7 @@ def insertIntoMaxHeap(arr:list, val):
             current = parent
         else:
             break                                                   # no swapping needed as new node val is lesser than parent node
-    print(arr)                                                      # printing all nodes of tree scanning from left-right
+    print(arr)                                                      # printing all nodes of tree after adding new val, scanning from left-right
 
     return
 
