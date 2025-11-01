@@ -1,4 +1,4 @@
-''' wap to implement the max heap using an array '''
+''' wap to implement the max heap ds by adding elements 1-by-1 '''
 ''' add nodes in a complete binary tree format (L-R-L-R) compare each added node with it parent until root. swap positions if added node is gt parent '''
 ''' traverse L-R in tree and display the elements '''
 
