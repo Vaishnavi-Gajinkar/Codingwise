@@ -33,19 +33,18 @@ def buildHeap(arr):
 
 def heapSort(arr):
     new_arr = []
-    last_idx = len(arr)
     
-    for idx in range(last_idx):
-        # arr[0], arr[last_idx-1] = arr[last_idx-1], arr[0]
-        temp = arr[0]                                                      # swap last node value with root node
-        arr[0] = arr[last_idx-1]
-        arr[last_idx-1] = temp
+    for idx in range(len(arr)):
+        arr[0], arr[len(arr)-1] = arr[len(arr)-1], arr[0]
+        # temp = arr[len(arr)-1]                                              # swap last node value with root node
+        # arr[len(arr)-1] = arr[0]
+        # arr[0] = temp
         
         popped_val = arr.pop()                                              # pop the last node
         new_arr.insert(0, popped_val)                                       # insert the last value in new arr
         
-        buildHeap(arr)                                                      # heapify the new structure
-    print(arr)
+        buildHeap(new_arr)                                                  # heapify the new structure
+    print(new_arr)
 
 
 
