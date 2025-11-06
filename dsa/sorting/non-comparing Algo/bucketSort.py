@@ -5,7 +5,7 @@
 # import math
 
 def bucketSort(arr:list):
-    new_arr = [[]]*10
+    new_arr = [[] for i in range(10)]
 
     for val in range(len(arr)):
         buk = int(arr[val]*10)
@@ -13,11 +13,14 @@ def bucketSort(arr:list):
     
     for i in range(len(new_arr)):
         for j in range(len(new_arr[i])):
-            print(new_arr[i][j])
+            print(new_arr[i][j], end=", ")
 
 
-x = [0.1,0.2,0.3,0.4,0.5,0.6]
-# x = [0.34,0.66,0.13,0.87,0.97,0.23,0.34,0.13,0.95,0.38,0.17,0.91]
+x = [0.34,0.66,0.13,0.87,0.97,0.23,0.34,0.13,0.95,0.38,0.17,0.91]
 bucketSort(x)
 
-# verify solution
+
+'''
+OUTPUT:
+0.13, 0.13, 0.17, 0.23, 0.34, 0.34, 0.38, 0.66, 0.87, 0.97, 0.95, 0.91, 
+'''
