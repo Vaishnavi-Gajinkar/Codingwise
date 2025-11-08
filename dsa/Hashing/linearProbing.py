@@ -26,6 +26,12 @@ def insertion(hashTable, value):
             return
         coll_count = coll_count+1
 
+def deletion(hashTable, delval):
+    if delval in hashTable:
+        pos = hashTable.index(delval)
+        hashTable[pos] = 0
+        return
+    print(f"value {delval} does not exist in hashtable")
 
 
 arr = [10,11,22,33,44,55,66,77,20,36,57]
@@ -33,10 +39,17 @@ for val in arr:
     insertion(hashTable, val)
 
 print(hashTable)
+deletion(hashTable, 22)                     # deleting an existing value
+print(hashTable)
+deletion(hashTable, 50)                     # deleting non-existing value
+print(hashTable)
 
 '''
 OUTPUT:
 [10, 11, 22, 33, 44, 55, 66, 77, 20, 36]
+[10, 11, 0, 33, 44, 55, 66, 77, 20, 36]
+value 50 does not exist in hashtable
+[10, 11, 0, 33, 44, 55, 66, 77, 20, 36]
 
 '''
 
