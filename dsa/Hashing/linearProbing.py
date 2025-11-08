@@ -28,8 +28,8 @@ def insertion(hashTable, value):
 
 def deletion(hashTable, delval):
     if delval in hashTable:
-        pos = hashTable.index(delval)
-        hashTable[pos] = 0
+        pos = hashTable.index(delval)                       # finds position of the val to be deleted
+        hashTable[pos] = 0                                  # replaces deleted value with default hastable value
         return
     print(f"value {delval} does not exist in hashtable")
 
@@ -41,7 +41,7 @@ for val in arr:
 print(hashTable)
 deletion(hashTable, 22)                     # deleting an existing value
 print(hashTable)
-deletion(hashTable, 50)                     # deleting non-existing value
+deletion(hashTable, 50)                     # deleting a non-existing value
 print(hashTable)
 
 '''
