@@ -8,10 +8,10 @@ def fibo(key, memo={}):                                     # keep a memory as k
         return memo[key]                                    # return value if key exist in memory
     else:
         memo[key] = fibo(key-1,memo)+fibo(key-2,memo)       # update memory with the new key-value
-        return memo[key]                                    # exist function and return the value of the key's value present in iteration
+        return memo[key]                                    # exit function and return the result of the current key's value 
 
 for i in range(10):
-    print(fibo(i),end=',')                                  # cal the fibo value of current key and print as a series
+    print(fibo(i),end=',')                                  # calc the fibo value of current key and print as a series
 
 '''
 OUTPUT:
